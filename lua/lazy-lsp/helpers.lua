@@ -25,7 +25,7 @@ local function nix_command_available()
   end
   cache_nix_command_available = false
 
-  local registry = vim.fn.system({ "nix", "--flake-registry", "", "registry", "list" })
+  local registry = vim.fn.system({ "nix", "--flake-registry", "\"\"", "registry", "list" })
   if vim.v.shell_error == 0 then
     for flake in vim.gsplit(registry, "\n") do
       local flake_url = string.match(flake, "^%S+ flake:nixpkgs (.*)")
